@@ -8,24 +8,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, password_hash, role FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, email, password_hash, role FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($id, $password_hash, $role);
+        $stmt->bind_result($id, $email_db, $password_hash, $role);
         $stmt->fetch();
 
         if (password_verify($password, $password_hash)) {
-            // Simpan data lengkap user di session
             $_SESSION['user'] = [
                 'id' => $id,
                 'email' => $email_db,
                 'role' => $role
             ];
-            
-            header("Location: home.php");
+
+            // Arahkan berdasarkan role
+            if ($role === 'admin') {
+                header("Location: home-admin.php");
+            } elseif ($role === 'customer') {
+                header("Location: home.php");
+            } else {
+                $error = "Peran tidak dikenali.";
+            }
             exit;
         } else {
             $error = "Password salah.";
@@ -35,12 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login HIGHTSNOEBITY</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style-login.css">
 </head>
 <body>
 <div class="container">

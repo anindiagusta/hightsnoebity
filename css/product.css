@@ -1,0 +1,217 @@
+/* DETAIL PRODUCT */
+
+* {
+  transition: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.detail-card {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.detail-images {
+  flex: 1 1 400px;
+  max-width: 450px;
+}
+
+.detail-images img.main-image {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+.thumbnail-images {
+  display: flex;
+  gap: 10px;
+}
+
+.thumbnail-images img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  margin-bottom: 15px;
+  /* Tidak ada efek hover */
+}
+
+.detail-info {
+  flex: 1 1 450px;
+}
+
+strong{
+    color: #333;
+}
+
+.product-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.product-info-table td {
+  padding: 8px 0;
+  border: none;
+  vertical-align: top;
+}
+
+.detail-info h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.detail-info p .brand{
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f97316;
+  margin-bottom: 10px;
+  margin-top: 50px;
+}
+
+.price .harga-asli {
+  font-size: 1.1rem;
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 15px;
+  font-weight: 400;
+}
+
+.add-to-cart-section {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.quantity-input {
+  width: 60px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.add-chart-btn {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  /* Tidak ada transition atau hover */
+}
+
+/* CHECKOUT */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #f9f9f9;
+  padding: 30px;
+}
+
+.checkout-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.checkout-form, .order-summary {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  flex: 1;
+  min-width: 300px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.order-summary h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.order-summary table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-summary th, .order-summary td {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  text-align: left;
+}
+
+.order-summary th {
+  background: #f0f0f0;
+}
+
+.order-summary tfoot td {
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detail-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-images, .detail-info {
+    max-width: 100%;
+    flex: unset;
+  }
+
+  .detail-info h2 {
+    font-size: 1.6rem;
+  }
+}

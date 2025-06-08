@@ -17,20 +17,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <header>
   <a href="#" class="logo">HIGHTSNOEBITY</a>
   <ul class="navlist">
-    <a href="home.php" class="<?= $currentPage == 'home.php' ? 'active' : '' ?>">Home</a>
-    <a href="products.php" class="<?= $currentPage == 'products.php' ? 'active' : '' ?>">Product</a>
-    <a href="sale.php" class="<?= $currentPage == 'sale.php' ? 'active' : '' ?>">Sale</a>
-    <a href="contact-us.php" class="<?= $currentPage == 'contact-us.php' ? 'active' : '' ?>">Contact Us</a>
+    <a href="home-admin.php" class="<?= $currentPage == 'home-admin.php' ? 'active' : '' ?>">Home</a>
+    <a href="products-crud.php" class="<?= $currentPage == 'products-crud.php' ? 'active' : '' ?>">Product</a>
+    <a href="brand-category-crud.php" class="<?= $currentPage == 'brand-category-crud.php' ? 'active' : '' ?>">Brands & Categories</a>
+    <a href="orders.php" class="<?= $currentPage == 'orders.php' ? 'active' : '' ?>">Orders</a>
   </ul>
   <div class="header-icons">
-    <?php if (isset($_SESSION['user'])): ?>
-      <!-- Sudah login, cart bisa diakses -->
-      <a href="cart.php"><i class='bx bx-cart'></i></a>
-    <?php else: ?>
-      <!-- Belum login, klik icon cart munculkan popup -->
-      <a href="javascript:void(0);" onclick="showLoginAlert()"><i class='bx bx-cart'></i></a>
-    <?php endif; ?>
-    
     <?php if (isset($_SESSION['user'])): ?>
       <div class="profile-popup">
         <input type="checkbox" id="toggle-popup" />

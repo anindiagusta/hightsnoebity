@@ -1,0 +1,109 @@
+*,
+*::before,
+*::after {
+  transition: none !important;
+  transform: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+  scroll-behavior: auto !important;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 30px;
+  margin: 0;
+  background: linear-gradient(to bottom right, #d9bba3, #e6cfc1, #f3e5db, #faf5f1);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgb(0 0 0 / 0.1);
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  min-width: 700px;
+}
+
+thead tr {
+  background-color: #333;
+  color: #fff;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.inline-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.inline-form select {
+  padding: 6px 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  min-width: 120px;
+  transition: border-color 0.3s ease;
+}
+
+.inline-form select:hover,
+.inline-form select:focus {
+  border-color: #333;
+  outline: none;
+}
+
+.inline-form button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.inline-form button:hover {
+  background-color: #555;
+}
+
+/* Responsive: scroll tabel jika layar kecil */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px 10px;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+  th, td {
+    white-space: nowrap;
+  }
+}

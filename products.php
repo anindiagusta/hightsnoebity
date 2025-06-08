@@ -28,7 +28,7 @@ $totalProducts = $totalRow['total'];
 $totalPages = ceil($totalProducts / $limit);
 
 // Ambil produk sesuai halaman
-$sql = "SELECT name, image_path, gender, harga, discount_price FROM products $where LIMIT $limit OFFSET $offset";
+$sql = "SELECT id, name, image_path, gender, harga, discount_price FROM products $where LIMIT $limit OFFSET $offset";
 $result = $conn->query($sql);
 ?>
 
@@ -69,32 +69,35 @@ $result = $conn->query($sql);
         }
         ?>
         <div class="product-card">
-            <?php if ($diskonPersen > 0): ?>
-                <div class="sale-badge">SALE <?= $diskonPersen ?>%</div>
-            <?php endif; ?>
+          <a href="product_detail.php?id=<?= $row['id'] ?>" style="text-decoration: none; color: inherit;">
+              <?php if ($diskonPersen > 0): ?>
+                  <div class="sale-badge">SALE <?= $diskonPersen ?>%</div>
+              <?php endif; ?>
 
-            <img src="<?= htmlspecialchars($row['image_path']) ?>" alt="<?= htmlspecialchars($row['name']) ?>">
-            <div class="fea-text">
-                <h5><?= htmlspecialchars($row['name']) ?></h5>
-                <p>
-                    Rp <?= number_format($hargaDiskon, 0, ',', '.') ?><br>
-                    <?php if ($diskonPersen > 0): ?>
-                        <small class="harga-asli">Rp <?= number_format($hargaAsli, 0, ',', '.') ?></small>
-                    <?php endif; ?>
-                </p>
-            </div>
-            <?php if (isset($_SESSION['user'])): ?>
+              <img src="<?= htmlspecialchars($row['image_path']) ?>" alt="<?= htmlspecialchars($row['name']) ?>">
+              <div class="fea-text">
+                  <h5><?= htmlspecialchars($row['name']) ?></h5>
+                  <p>
+                      Rp <?= number_format($hargaDiskon, 0, ',', '.') ?><br>
+                      <?php if ($diskonPersen > 0): ?>
+                          <small class="harga-asli">Rp <?= number_format($hargaAsli, 0, ',', '.') ?></small>
+                      <?php endif; ?>
+                  </p>
+              </div>
+          </a>
+
+          <?php if (isset($_SESSION['user'])): ?>
               <!-- Jika sudah login, submit ke add_to_cart.php -->
               <form method="POST" action="add_to_cart.php">
-                <input type="hidden" name="product_name" value="<?= htmlspecialchars($row['name']) ?>">
-                <input type="hidden" name="product_price" value="<?= $hargaDiskon ?>">
-                <button type="submit" class="add-chart-btn">Add to Cart</button>
+                  <input type="hidden" name="product_name" value="<?= htmlspecialchars($row['name']) ?>">
+                  <input type="hidden" name="product_price" value="<?= $hargaDiskon ?>">
+                  <button type="submit" class="add-chart-btn">Add to Cart</button>
               </form>
-            <?php else: ?>
+          <?php else: ?>
               <!-- Jika belum login, tombol akan memunculkan popup -->
               <button class="add-chart-btn" onclick="showLoginAlert()">Add to Cart</button>
-            <?php endif; ?>
-        </div>
+          <?php endif; ?>
+      </div>
     <?php endwhile; ?>
     </div>
 
@@ -124,8 +127,9 @@ $result = $conn->query($sql);
   </div>
 
   <a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+
+  <?php include 'footer.php'; ?>
+
   <script src="js/script.js"></script>
 </body>
 </html>
-
-<?php include 'footer.php'; ?>

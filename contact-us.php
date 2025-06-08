@@ -68,6 +68,6 @@
     <H1 style="color: #808080;">Kelompok 5</H1>
   </div>
   <a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
- 
+ <script src="js/script.js"></script>
   </body>
   </html>

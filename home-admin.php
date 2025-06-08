@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+    header("HTTP/1.0 404 Not Found");
+    echo "<h1>404 Not Found</h1>";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +23,7 @@ session_start();
 </head>
 
 <body>
-  <?php include 'header.php'; ?>
+  <?php include 'header-admin.php'; ?>
 
   <section class="home" id="home" style="background-image: url('images/views/home.png');">
     <div class="home-text">

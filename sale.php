@@ -2,8 +2,22 @@
 session_start();
 include 'config.php';
 
-// Ambil produk yang memiliki diskon (discount_price > 0)
-$sql = "SELECT name, image_path, harga, discount_price FROM products WHERE discount_price > 0";
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$limit = 16;
+$offset = ($page - 1) * $limit;
+
+// Ambil total produk dengan diskon
+$totalQuery = "SELECT COUNT(*) as total FROM products WHERE discount_price > 0";
+$totalResult = $conn->query($totalQuery);
+$totalRow = $totalResult->fetch_assoc();
+$totalProducts = $totalRow['total'];
+$totalPages = ceil($totalProducts / $limit);
+
+// Ambil produk sesuai halaman
+$sql = "SELECT name, image_path, harga, discount_price 
+        FROM products 
+        WHERE discount_price > 0 
+        LIMIT $limit OFFSET $offset";
 $result = $conn->query($sql);
 ?>
 
@@ -77,22 +91,26 @@ $result = $conn->query($sql);
     </section>
 
   <div class="pagination">
-      <?php if ($page > 1): ?>
-          <a href="?filter=<?= htmlspecialchars($filter) ?>&page=<?= $page - 1 ?>" class="pagination-button">« Previous</a>
-      <?php endif; ?>
+    <?php if ($page > 1): ?>
+        <a href="?page=<?= $page - 1 ?>" class="pagination-button">« Previous</a>
+    <?php endif; ?>
 
-      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-          <a href="?filter=<?= htmlspecialchars($filter) ?>&page=<?= $i ?>" class="pagination-button <?= $i == $page ? 'active' : '' ?>">
-          <?= $i ?>
-          </a>
-      <?php endfor; ?>
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?page=<?= $i ?>" class="pagination-button <?= $i == $page ? 'active' : '' ?>">
+            <?= $i ?>
+        </a>
+    <?php endfor; ?>
 
-      <?php if ($page < $totalPages): ?>
-          <a href="?filter=<?= htmlspecialchars($filter) ?>&page=<?= $page + 1 ?>" class="pagination-button">Next »</a>
-      <?php endif; ?>
+    <?php if ($page < $totalPages): ?>
+        <a href="?page=<?= $page + 1 ?>" class="pagination-button">Next »</a>
+    <?php endif; ?>
   </div>
+  </section>
 
   <a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+  <script src="js/script.js"></script>
+
+  <?php include 'footer.php'; ?>
+
 </body>
 </html>
-<?php include 'footer.php'; ?>

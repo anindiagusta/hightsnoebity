@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("INSERT INTO users (email, password_hash, role) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $email, $password_hash, $role);
             if ($stmt->execute()) {
-                $success = "Registrasi berhasil. <a href='login.php'>Login di sini</a>.";
+                header("Location: login.php");
             } else {
                 $error = "Gagal registrasi, coba lagi.";
             }

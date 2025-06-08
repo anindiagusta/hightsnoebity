@@ -52,7 +52,7 @@ header{
 }  
 
 .navlist a{
-    color: var(--text-color);
+    color: #808080;
     font-weight: 600;
     padding: 10px 25px;
     font-size: var(--normal-font);
@@ -61,6 +61,10 @@ header{
 
 .navlist a:hover{
      color: var(--main-color);
+}
+
+.navlist a.active {
+  color: black;
 }
 
 .header-icons{

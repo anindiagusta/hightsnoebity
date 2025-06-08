@@ -1,0 +1,73 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 30px;
+  margin: 0;
+  background: linear-gradient(to bottom right, #d9bba3, #e6cfc1, #f3e5db, #faf5f1);
+  min-height: 100vh;
+}
+
+.profile-container {
+  max-width: 600px;
+  margin: auto;
+  background: #ffffffdd;
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+.profile-info label {
+  font-weight: 600;
+  display: block;
+  margin-top: 20px;
+  color: #333;
+}
+
+.profile-info p {
+  margin: 5px 0 10px;
+  color: #555;
+  background: #f2e6dc ;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.actions a,
+.actions button {
+  text-decoration: none;
+  background-color: #d6b09b;
+  color: black;
+  padding: 12px 20px;
+  margin: 0 10px;
+  border-radius: 8px;
+  display: inline-block;
+  border: none; /* untuk <button> */
+  cursor: pointer;
+  font: inherit; /* agar tampilan teks seragam */
+}
+
+.actions a:hover,
+.actions button:hover {
+  background-color: #c89d88;
+}
+
+.profile-info input,
+.profile-info select,
+.profile-info textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

@@ -1,0 +1,188 @@
+* {
+  transition: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  min-height: 100vh; 
+  background: linear-gradient(to bottom right, #d9bba3, #e6cfc1, #f3e5db, #faf5f1);
+  font-family: Arial, sans-serif;
+  padding: 20px 30px;
+  color: #333;
+}
+
+h2 {
+    color: #222;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Flex container for two columns */
+.container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Left form */
+.form-container {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+/* Right product list */
+.list-container {
+    flex: 2;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Form styling */
+form div {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+    border-radius: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #000;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Categories checkboxes inline */
+.categories label {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.categories input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;   
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;         
+}
+
+
+th, td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 13px;
+}
+
+thead {
+    background-color: #333;
+    color: white;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Pagination styling */
+.pagination {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 0 3px;
+    border: 1px solid #333;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pagination .current {
+    background-color: #333;
+    color: white;
+    border: 1px solid #333;
+}
+
+.crud-group {
+  flex: 0 0 50%;      
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  max-width: 450px;
+  border-radius: 10px;
+}
+
+.crud-group h2 {
+  margin-bottom: 1rem;
+}
+
+.crud-group .form-container {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .crud-group {
+    margin-bottom: 3rem;
+  }
+}
