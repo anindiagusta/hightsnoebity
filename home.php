@@ -1,0 +1,30 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Fashion Web</title>
+
+  <link href="css/FASHION.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+
+<body>
+  <?php include 'header.php'; ?>
+
+  <section class="home" id="home" style="background-image: url('images/views/home.png');">
+    <div class="home-text">
+      <h1>HIGHT <br><span>SNOEBITY</span></h1>
+      <p>New colors, now also available in Fashion sizing</p>
+      <a href="view.html" class="btn"> About Us</a>
+    </div>
+  </section>
+</body>
+</html>
