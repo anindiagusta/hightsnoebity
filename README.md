@@ -31,7 +31,7 @@ C:\xampp\htdocs\hightsnoebity
 ### a. Buka halaman repository di browser  
 [https://github.com/anindiagusta/hightsnoebity.git](https://github.com/anindiagusta/hightsnoebity.git)
 
-### b. Download file `hightsnoebity.sql`
+### b. Buka folder 'sql' dan download file `hightsnoebity.sql`
 
 ### c. Buka phpMyAdmin dan buat database baru  
 Gunakan nama database: `hightsnoebity`
