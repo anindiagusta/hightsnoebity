@@ -1,12 +1,16 @@
 <?php
 session_start();
+
+// Include database configuration
 include 'config.php';
 
+// Cek login dan cart
 if (!isset($_SESSION['user']) || empty($_SESSION['cart'])) {
     header("Location: cart.php");
     exit;
 }
-
+ 
+// Ambil data dari form checkout
 $userId = $_SESSION['user']['id'];
 $grandTotal = $_POST['grand_total'] ?? 0;
 $address = $_POST['address'] ?? '';
@@ -19,7 +23,7 @@ $stmt = $conn->prepare("INSERT INTO orders (user_id, order_date, status, total_p
 $stmt->bind_param("issdss", $userId, $orderDate, $status, $grandTotal, $address, $paymentMethod);
 $stmt->execute();
 
-$orderId = $stmt->insert_id;
+$orderId = $stmt->insert_id; // Ambil ID order yang baru dibuat
 
 // Simpan detail produk ke order_items (jika tabel tersedia)
 if (isset($_SESSION['cart'])) {

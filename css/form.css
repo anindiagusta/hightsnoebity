@@ -51,9 +51,9 @@ h2 {
   margin: 0 10px;
   border-radius: 8px;
   display: inline-block;
-  border: none; /* untuk <button> */
+  border: none;
   cursor: pointer;
-  font: inherit; /* agar tampilan teks seragam */
+  font: inherit;
 }
 
 .actions a:hover,

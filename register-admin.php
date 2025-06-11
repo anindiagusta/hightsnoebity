@@ -41,36 +41,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
-<head><title>Register</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Admin - HIGHTSNOEBITY</title>
+    <link rel="stylesheet" href="css/style-login.css">
+</head>
 <body>
-<h2>Register User Baru</h2>
+<div class="container">
+    <div class="left-panel">
+        <div class="logo">
+            <h1>REGISTER HIGHTSNOEBITY</h1>
+        </div>
 
-<?php if ($error): ?>
-    <p style="color:red;"><?= htmlspecialchars($error) ?></p>
-<?php endif; ?>
+        <?php if ($error): ?>
+            <p class="error"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
 
-<?php if ($success): ?>
-    <p style="color:green;"><?= $success ?></p>
-<?php else: ?>
-<form method="POST" action="">
-    Email:<br>
-    <input type="email" name="email" required><br><br>
+        <?php if ($success): ?>
+            <p class="success"><?= $success ?></p>
+        <?php else: ?>
+            <form method="POST" action="">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="ex: name@example.com" required>
 
-    Password:<br>
-    <input type="password" name="password" required><br><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="ex: P@SsW0rD" required>
 
-    Role:<br>
-    <select name="role" required>
-        <option value="customer" selected>Customer</option>
-        <option value="admin">Admin</option>
-    </select><br><br>
+                <input type="hidden" name="role" value="admin">
 
-    <button type="submit">Register</button>
-</form>
-<?php endif; ?>
+                <button type="submit">REGISTER</button>
+            </form>
+        <?php endif; ?>
 
-<p><a href="login.php">Sudah punya akun? Login</a></p>
-
+        <div class="question"><p>Sudah punya akun? <a href="login.php">Login</a></p></div>
+    </div>
+    <div class="right-panel">
+        <img src="images/views/home.png" alt="Together Healthy">
+        <div class="overlay-text">
+            <h2>New colors</h2>
+            <p>now also available in Fashion sizing</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
