@@ -7,8 +7,15 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-$userId = $_SESSION['user']['id'];
+$currentUser = $_SESSION['user'];
 $success = $error = "";
+
+// Tentukan ID yang akan diedit
+if ($currentUser['role'] === 'admin' && isset($_GET['id'])) {
+    $userId = intval($_GET['id']); // Admin bisa edit user manapun
+} else {
+    $userId = $currentUser['id']; // Customer hanya bisa edit dirinya sendiri
+}
 
 // Ambil data user
 $stmt = $conn->prepare("SELECT name, email, gender, phone, address FROM users WHERE id = ?");
@@ -16,6 +23,11 @@ $stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
+
+if (!$user) {
+    echo "User tidak ditemukan.";
+    exit;
+}
 
 // Proses update jika form disubmit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -29,9 +41,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $update = $conn->prepare("UPDATE users SET name = ?, gender = ?, phone = ?, address = ? WHERE id = ?");
         $update->bind_param("ssssi", $name, $gender, $phone, $address, $userId);
+
         if ($update->execute()) {
-            $_SESSION['user']['name'] = $name;
-            header("Location: profile.php");
+            // Jika yang diedit adalah user yang sedang login, perbarui sesi juga
+            if ($currentUser['id'] === $userId) {
+                $_SESSION['user']['name'] = $name;
+            }
+
+            // Redirect ke halaman yang sesuai
+            if ($currentUser['role'] === 'admin' && isset($_GET['id'])) {
+                header("Location: manage_users.php");
+            } else {
+                header("Location: profile.php");
+            }
             exit;
         } else {
             $error = "Failed to update profile.";

@@ -1,12 +1,20 @@
 <?php
 session_start();
 
+// hak akses hanya untuk customer
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'customer') {
+    header("HTTP/1.0 404 Not Found");
+    echo "<h1>404 Not Found</h1>";
+    exit;
+}
+
 // Handle delete action
-if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['product'])) {
-    $productToDelete = $_GET['product'];
-    if (isset($_SESSION['cart'][$productToDelete])) {
-        unset($_SESSION['cart'][$productToDelete]);
-        header('Location: ' . strtok($_SERVER["REQUEST_URI"], '?'));
+if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['product'])) { // cek apakah ada action delete dan product
+    $productToDelete = $_GET['product']; // ambil nama produk dari parameter
+    if (isset($_SESSION['cart'][$productToDelete])) { // cek apakah produk ada di cart
+        unset($_SESSION['cart'][$productToDelete]); // hapus produk dari cart
+        header('Location: ' . strtok($_SERVER["REQUEST_URI"], '?')); // redirect ke halaman yang sama tanpa parameter
+        
         exit;
     }
 }

@@ -1,59 +1,64 @@
 <?php
 session_start();
+
+// include database configuration
 include 'config.php';
 
+// hak akses hanya untuk admin
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header("HTTP/1.0 404 Not Found");
     echo "<h1>404 Not Found</h1>";
     exit;
 }
 
-// === Handle Create / Update ===
+// Action untuk menambahkan atau mengupdate brand atau kategori
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $table = $_POST['table'];
     $id = $_POST['id'] ?? '';
     $name = trim($_POST['name']);
 
-    if ($id) {
+    if ($id) { // Jika ID ada, berarti update
         $stmt = $conn->prepare("UPDATE $table SET name=? WHERE id=?");
         $stmt->bind_param("si", $name, $id);
         $stmt->execute();
-    } else {
+    } else { // Jika ID tidak ada, berarti insert
         $stmt = $conn->prepare("INSERT INTO $table (name) VALUES (?)");
         $stmt->bind_param("s", $name);
         $stmt->execute();
     }
 
+    // Redirect setelah operasi
     header("Location: brand-category-crud.php");
     exit;
 }
 
-// === Handle Delete ===
-if (isset($_GET['delete']) && isset($_GET['table'])) {
+// Action untuk menghapus brand atau kategori
+if (isset($_GET['delete']) && isset($_GET['table'])) { // Cek apakah ada parameter delete dan table
     $id = (int)$_GET['delete'];
-    $table = $_GET['table'];
-    $conn->query("DELETE FROM $table WHERE id = $id");
+    $table = $_GET['table']; 
+    $conn->query("DELETE FROM $table WHERE id = $id"); // Hapus data berdasarkan ID dan table
+    // Redirect setelah delete
     header("Location: brand-category-crud.php");
     exit;
 }
 
-// === Handle Edit ===
-$editBrand = null;
-$editCategory = null;
+// Action untuk mengedit brand atau kategori
+$editBrand = null; // Inisialisasi variabel untuk menyimpan data yang akan diedit
+$editCategory = null; // Inisialisasi variabel untuk menyimpan data yang akan diedit
 
-if (isset($_GET['edit']) && isset($_GET['table'])) {
+if (isset($_GET['edit']) && isset($_GET['table'])) { // Cek apakah ada parameter edit dan table
     $id = (int)$_GET['edit'];
     $table = $_GET['table'];
-    $result = $conn->query("SELECT * FROM $table WHERE id = $id");
-    if ($row = $result->fetch_assoc()) {
-        if ($table === 'brands') $editBrand = $row;
-        if ($table === 'categories') $editCategory = $row;
+    $result = $conn->query("SELECT * FROM $table WHERE id = $id"); // Ambil data berdasarkan ID dan table
+    if ($row = $result->fetch_assoc()) { // Jika ada data yang ditemukan
+        if ($table === 'brands') $editBrand = $row; // Simpan data brand yang akan diedit
+        if ($table === 'categories') $editCategory = $row; // Simpan data kategori yang akan diedit
     }
 }
 
-// === Fetch All ===
-$brands = $conn->query("SELECT * FROM brands ORDER BY id DESC");
-$categories = $conn->query("SELECT * FROM categories ORDER BY id DESC");
+// Actions untuk mengambil data brands dan categories
+$brands = $conn->query("SELECT * FROM brands ORDER BY id DESC"); // Ambil semua data brands
+$categories = $conn->query("SELECT * FROM categories ORDER BY id DESC"); // Ambil semua data categories
 ?>
 
 <!DOCTYPE html>

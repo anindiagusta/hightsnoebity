@@ -55,11 +55,22 @@ if ($isAdmin) {
             <p><?= nl2br(htmlspecialchars($userData['address'])) ?: '-' ?></p>
             </div>
 
-            <div class="actions">
-            <a href="edit_profile.php">Edit Profile</a>
-            <a href="orders.php">My Orders</a>
-            <a href="logout.php">Logout</a>
-            </div>
+            <?php
+            if ($isAdmin) { ?>
+                <div class="actions">
+                <a style="padding: 12px 12px;"; href="edit_profile.php">Edit Profile</a>
+                <a style="padding: 12px 12px;"; href="register-admin.php">Add Admin</a>
+                <a style="padding: 12px 12px;"; href="manage_users.php">Manage Users</a>
+                <a style="padding: 12px 12px;"; href="logout.php">Logout</a>
+                </div> 
+            <?php } else { ?>
+                <div class="actions">
+                <a href="edit_profile.php">Edit Profile</a>
+                <a href="orders.php"> My Orders</a>
+                <a href="logout.php">Logout</a>
+                </div>
+            <?php } ?>
+            
         </div>
     </section>
 </body>

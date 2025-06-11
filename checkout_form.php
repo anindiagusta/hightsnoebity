@@ -7,26 +7,27 @@ if (!isset($_SESSION['user']) || empty($_SESSION['cart'])) {
     exit;
 }
 
+// Include database configuration
 include 'config.php';
 
 $cart = $_SESSION['cart']; // Format: [product_name => ['price' => ..., 'quantity' => ...]]
 
-$products = [];
-$grandTotal = 0;
+$products = []; // Array untuk menyimpan detail produk
+$grandTotal = 0; // Inisialisasi total belanja
 
-foreach ($cart as $name => $item) {
+foreach ($cart as $name => $item) { // Looping setiap item di cart
     $price = (float)$item['price'];
     $qty = (int)$item['quantity'];
     $subtotal = $price * $qty;
 
-    $products[] = [
+    $products[] = [  // Simpan detail produk ke array
         'name' => $name,
         'price' => $price,
         'qty' => $qty,
         'total' => $subtotal
     ];
 
-    $grandTotal += $subtotal;
+    $grandTotal += $subtotal; // Tambahkan subtotal ke grand total
 }
 ?>
 
