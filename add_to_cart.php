@@ -1,13 +1,6 @@
 <?php
 session_start();
 
-// Hak akses hanya untuk customer
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'customer') {
-    header("HTTP/1.0 404 Not Found");
-    echo "<h1>404 Not Found</h1>";
-    exit;
-}
-
 // Inisialisasi cart session
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];

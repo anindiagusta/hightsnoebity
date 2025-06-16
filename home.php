@@ -1,12 +1,6 @@
 <?php
 session_start();
 
-// Hak Akses: Hanya pengguna dengan peran 'customer' yang dapat mengakses halaman ini
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'customer') {
-    header("HTTP/1.0 404 Not Found");
-    echo "<h1>404 Not Found</h1>";
-    exit;
-}
 ?>
 
 <!DOCTYPE html>

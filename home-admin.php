@@ -1,12 +1,6 @@
 <?php
 session_start();
 
-// Hak akses hanya untuk admin
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
-    header("HTTP/1.0 404 Not Found");
-    echo "<h1>404 Not Found</h1>";
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +18,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 </head>
 
 <body>
+  
   <!-- include header -->
   <?php include 'header-admin.php'; ?>
 
