@@ -1,13 +1,6 @@
 <?php
 session_start();
 
-// hak akses hanya untuk customer
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'customer') {
-    header("HTTP/1.0 404 Not Found");
-    echo "<h1>404 Not Found</h1>";
-    exit;
-}
-
 // Handle delete action
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['product'])) { // cek apakah ada action delete dan product
     $productToDelete = $_GET['product']; // ambil nama produk dari parameter
