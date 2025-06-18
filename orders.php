@@ -44,7 +44,6 @@ if ($isAdmin) {
 </head>
 <body>
 
-
 <?php
 if ($isAdmin) {
     include 'header-admin.php';

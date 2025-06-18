@@ -11,7 +11,8 @@ body {
   justify-content: center;
   align-items: center; 
   min-height: 100vh; 
-  background: linear-gradient(to bottom right, #d9bba3, #e6cfc1, #f3e5db, #faf5f1);
+  background: url("../images/views/background-2.jpg") no-repeat center center;
+  background-size: cover;
   font-family: Arial, sans-serif;
   padding: 20px 30px;
   color: #333;
@@ -177,12 +178,137 @@ a {
   margin-bottom: 2rem;
 }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
+/* Responsive */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
 
-  .crud-group {
-    margin-bottom: 3rem;
-  }
+    .form-container,
+    .list-container {
+        max-width: 100%;
+        position: static;
+        top: auto;
+    }
+
+    .list-container {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .crud-group {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 30px 15px;
+    }
+
+    .container {
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .form-container,
+    .list-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 0.85rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    th, td {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+
+    .pagination a,
+    .pagination span {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .container {
+        padding: 5px;
+        gap: 15px;
+    }
+
+    .form-container,
+    .list-container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    button[type="submit"] {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
+
+    .categories label {
+        margin-right: 10px;
+        font-size: 0.8rem;
+    }
+
+    .list-container table {
+        min-width: 500px;
+    }
+
+    .list-container {
+        overflow-x: auto;
+    }
 }

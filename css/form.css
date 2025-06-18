@@ -2,7 +2,8 @@ body {
   font-family: 'Segoe UI', sans-serif;
   padding: 30px;
   margin: 0;
-  background: linear-gradient(to bottom right, #d9bba3, #e6cfc1, #f3e5db, #faf5f1);
+  background: url("../images/views/background-1.jpg") no-repeat center center;
+  background-size: cover;
   min-height: 100vh;
 }
 
