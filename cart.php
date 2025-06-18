@@ -22,56 +22,7 @@ $grandTotal = 0;
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>Fashion Web</title>
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background-color: #333;
-      color: white;
-    }
-    .total {
-      font-weight: bold;
-      text-align: right;
-      padding-right: 10px;
-    }
-    .empty-cart {
-      font-style: italic;
-      color: #888;
-      margin-bottom: 15px;
-    }
-    .button{
-      background-color: #333;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
-    }
-    .button:hover{
-      background-color: #555;
-    }
-    .delete-button {
-      padding: 5px 10px;
-      font-size: 0.9em;
-      border-radius: 5px;
-    }
-    .delete-button:hover {
-      color: #e74c3c;
-    }
-  </style>
-  <link href="css/FASHION.css" rel="stylesheet"/>
+  <link href="css/cart.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -9,6 +9,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HIGHTSNOEBITY</title>
   <link rel="stylesheet" href="css/FASHION.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -50,3 +51,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
   </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById('menu-icon'); // Sesuai ID di HTML
+  const navlist = document.querySelector('.navlist'); // pakai class, karena navlist tidak punya ID
+
+  menuToggle.addEventListener('click', () => {
+    navlist.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+
+    if (menuToggle.classList.contains('active')) {
+      menuToggle.classList.replace('bx-menu', 'bx-x');
+    } else {
+      menuToggle.classList.replace('bx-x', 'bx-menu');
+    }
+  });
+</script>

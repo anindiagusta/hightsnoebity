@@ -9,6 +9,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HIGHTSNOEBITY</title>
   <link rel="stylesheet" href="css/FASHION.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -58,3 +59,20 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
   </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById('menu-icon');
+  const navlist = document.querySelector('.navlist');
+
+  menuToggle.addEventListener('click', () => {
+    navlist.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+
+    // Ganti ikon (menu ↔ X)
+    if (menuToggle.classList.contains('active')) {
+      menuToggle.classList.replace('bx-menu', 'bx-x');
+    } else {
+      menuToggle.classList.replace('bx-x', 'bx-menu');
+    }
+  });
+</script>

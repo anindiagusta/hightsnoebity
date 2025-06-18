@@ -61,13 +61,76 @@
     color: #aaa;
   }
 
-  @media (max-width: 768px) {
-    .contact {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+  @media (max-width: 1024px) {
+  .contact {
+    padding: 50px 5%;
+    gap: 25px;
   }
+
+  .main-contact {
+    flex: 1 1 200px;
+  }
+
+  .main-contact h3 {
+    font-size: 1.1rem;
+  }
+
+  .main-contact h5,
+  .main-contact a,
+  .last-text p {
+    font-size: 0.85rem;
+  }
+
+  .icons a {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 40px 5%;
+    gap: 20px;
+  }
+
+  .main-contact {
+    flex: 0 0 auto;
+    width: 100%;
+    margin: 0;
+  }
+
+  .main-contact:first-child {
+    flex-basis: auto;
+  }
+
+  .icons {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 30px 4%;
+    gap: 15px;
+  }
+
+  .main-contact h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .main-contact h5,
+  .main-contact a,
+  .last-text p {
+    font-size: 0.8rem;
+  }
+
+  .icons a {
+    font-size: 1.5rem;
+  }
+}
 </style>
 
 <section class="contact" id="contact">

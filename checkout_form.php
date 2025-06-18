@@ -36,54 +36,8 @@ foreach ($cart as $name => $item) { // Looping setiap item di cart
 <head>
   <meta charset="UTF-8" />
   <title>Checkout</title>
-  <link rel="stylesheet" href="css/product.css" />
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 20px;
-    }
-    .checkout-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: space-between;
-    }
-    .checkout-form, .order-summary {
-      flex: 1;
-      min-width: 300px;
-    }
-    .order-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .order-table th, .order-table td {
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-    .btn-submit {
-      padding: 10px 20px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-    .btn-submit:hover {
-      background-color: #555;
-    }
-    textarea, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    label {
-      font-weight: bold;
-    }
-  </style>
+  <link rel="stylesheet" href="css/product.css"/>
+  <link rel="stylesheet" href="css/cart.css"/>
 </head>
 <body>
 
